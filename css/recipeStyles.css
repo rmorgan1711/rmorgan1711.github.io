@@ -1,3 +1,15 @@
+@media (max-width: 800px) {
+    body {
+        font-size: xx-large;
+    }
+}
+
+@media (min-width: 800px) {
+    body {
+        font-size: x-large;
+    }
+}
+
 body {
     margin: 50px;
     font-family: Arial, Helvetica, sans-serif;
