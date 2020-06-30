@@ -1,7 +1,29 @@
+body {
+    margin: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+    border: 0px;
+    padding: 0px;
+    margin-bottom: 0px;
+    text-decoration: underline;
+}
+
 img {
     height: 100px;
 }
 
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .plated {
     height: 300px;
+    margin-right: 30px;
+}
+
+.gear-list {
+    margin-right: 20px;
 }
