@@ -1,10 +1,10 @@
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
     body {
         font-size: xx-large;
     }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 900px) {
     body {
         font-size: x-large;
     }
