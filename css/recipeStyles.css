@@ -1,17 +1,18 @@
-@media (max-width: 800px) {
+@media (max-width: 750px) {
     body {
         font-size: xx-large;
+        margin: 10px;
     }
 }
 
-@media (min-width: 801px) {
+@media (min-width: 751px) {
     body {
         font-size: x-large;
+        margin: 50px;
     }
 }
 
 body {
-    margin: 50px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
