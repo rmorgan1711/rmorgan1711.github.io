@@ -1,13 +1,13 @@
 @media (max-width: 750px) {
     body {
-        font-size: xx-large;
-        margin: 10px;
+        font-size: 1.5em;
+        margin: 20px;
     }
 }
 
 @media (min-width: 751px) {
     body {
-        font-size: x-large;
+        font-size: 1.2em;
         margin: 50px;
     }
 }
