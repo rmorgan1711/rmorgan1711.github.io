@@ -77,7 +77,6 @@
             d3.select("#my-graph svg").remove();
             svg = appendGraphG('#my-graph');
             drawChart(svg, self.data);
-            console.log(self.data);
         }
 
         function showWeightChart() {
@@ -93,7 +92,6 @@
                 data.push(datum);
             }
 
-            console.log(data);
             self.data = convertDates(data);
             drawChart(self.svg, self.data);
         }
@@ -142,6 +140,13 @@
                     .x(function (d) { return scaleX(d.date) })
                     .y(function (d) { return scaleY(d.weight) })
                 )
+            
+            svg.selectAll('dot')
+                .data(data)
+                .join('circle')
+                .attr('r', 5)
+                .attr('cx', d => scaleX(d.date))
+                .attr('cy', d => scaleY(d.weight))
         }
 
         window.onload = function () {
