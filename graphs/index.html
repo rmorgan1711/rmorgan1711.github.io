@@ -17,10 +17,10 @@
     <h3>Graph</h3>
 
     <div id="my-graph"></div>
-    <form id="weight-update-form" onsubmit="my_update(event)">
+    <form id="weight-update-form" onsubmit="update_chart_data(event)">
         <input id="pwl-date" type="date" />
         <input id="pwl-weight" type="number" />
-        <button type="button" onclick="my_update(event)">Update</button>
+        <button type="button" onclick="update_chart_data(event)">Update</button>
     </form>
 
     <script>
@@ -56,12 +56,13 @@
             }
         }
 
-        function my_update(event) {
+        function update_chart_data(event) {
             event.preventDefault();
             event.stopImmediatePropagation();
 
             let date = d3.select('#pwl-date').node().value;
             date = d3.timeParse('%Y-%m-%d')(date)
+            console.log(date);
 
             const weight = str_to_float(d3.select('#pwl-weight').node().value);
             if (isNaN(weight)) { return; }
@@ -76,25 +77,29 @@
             d3.select("#my-graph svg").remove();
             svg = appendGraphG('#my-graph');
             drawChart(svg, self.data);
+            console.log(self.data);
         }
 
         function showWeightChart() {
             const data = [];
-            const formatDate = d3.timeFormat('%Y-%m-%dT%I:%M:%SZ');
+            const formatDate = d3.timeFormat('%Y-%m-%dT%H:%M:%SZ');
             for (let i = 0; i < 15; i++) {
+                let date = new Date(Date.now() - (i * 2) * 1000 * 60 * 60 * 24)
+                date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
                 const datum = {
-                    "date": formatDate(new Date(Date.now() - (i * 2) * 1000 * 60 * 60 * 24)),
+                    "date": formatDate(date),
                     "weight": 100 + Math.round(Math.random() * 100)
                 };
                 data.push(datum);
             }
 
+            console.log(data);
             self.data = convertDates(data);
             drawChart(self.svg, self.data);
         }
 
         function convertDates(data) {
-            let dateParser = d3.timeParse('%Y-%m-%dT%I:%M:%SZ');
+            let dateParser = d3.timeParse('%Y-%m-%dT%H:%M:%SZ');
             const new_dates = [];
             for (let i = 0; i < data.length; i++) {
                 new_dates.push({
