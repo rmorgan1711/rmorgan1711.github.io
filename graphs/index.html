@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Graph Demo</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <style>
+        svg {
+            border: solid 1px gray;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Graph</h3>
+
+    <div id="my-graph"></div>
+    <form id="weight-update-form" onsubmit="my_update(event)">
+        <input id="pwl-date" type="date" />
+        <input id="pwl-weight" type="number" />
+        <button type="button" onclick="my_update(event)">Update</button>
+    </form>
+
+    <script>
+
+        const timeFormatter = d3.timeFormat('%Y-%m-%d');
+        d3.select('#pwl-date')
+            .attr('value', timeFormatter(new Date()));
+
+        const self = this;
+
+        var margin = { top: 10, right: 30, bottom: 30, left: 60 },
+            width = 460 - margin.left - margin.right,
+            height = 400 - margin.top - margin.bottom;
+
+        function appendGraphG(selector) {
+            return d3.select("#my-graph")
+                .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+        }
+
+        var svg = appendGraphG("#my-graph");
+
+        function str_to_float(str) {
+            let num = parseFloat(str);
+            if (!isNaN(num) && num.toString() === str && 1 < num && num < 2000) {
+                return num;
+            } else {
+                return NaN;
+            }
+        }
+
+        function my_update(event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            let date = d3.select('#pwl-date').node().value;
+            date = d3.timeParse('%Y-%m-%d')(date)
+
+            const weight = str_to_float(d3.select('#pwl-weight').node().value);
+            if (isNaN(weight)) { return; }
+
+            let index = self.data.findIndex((e) => e.date.valueOf() === date.valueOf());
+            if (index === -1) {
+                self.data.push({ date: date, weight: weight });
+            } else {
+                self.data[index].weight = weight;
+            }
+
+            d3.select("#my-graph svg").remove();
+            svg = appendGraphG('#my-graph');
+            drawChart(svg, self.data);
+        }
+
+        function showWeightChart() {
+            const data = [];
+            const formatDate = d3.timeFormat('%Y-%m-%dT%I:%M:%SZ');
+            for (let i = 0; i < 15; i++) {
+                const datum = {
+                    "date": formatDate(new Date(Date.now() - (i * 2) * 1000 * 60 * 60 * 24)),
+                    "weight": 100 + Math.round(Math.random() * 100)
+                };
+                data.push(datum);
+            }
+
+            self.data = convertDates(data);
+            drawChart(self.svg, self.data);
+        }
+
+        function convertDates(data) {
+            let dateParser = d3.timeParse('%Y-%m-%dT%I:%M:%SZ');
+            const new_dates = [];
+            for (let i = 0; i < data.length; i++) {
+                new_dates.push({
+                    date: dateParser(data[i].date),
+                    weight: data[i].weight
+                })
+            }
+            return (new_dates);
+        }
+
+        function drawChart(svg, data) {
+
+            data.sort((first, second) => {
+                return first.date.valueOf() - second.date.valueOf();
+            })
+
+            const scaleX = d3.scaleTime()
+                .domain(d3.extent(data, function (d) { return d.date; }))
+                .range([0, width]);
+            svg.append("g")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(scaleX)
+                    .tickFormat(d3.timeFormat('%b-%d'))
+                    // .ticks(7)
+                    // .tickArguments([d3.timeDay.every(1)])
+                );
+
+            const scaleY = d3.scaleLinear()
+                .domain([0, d3.max(data, function (d) { return +d.weight; })])
+                .range([height, 0]);
+            svg.append("g")
+                .call(d3.axisLeft(scaleY));
+
+            svg.append("path")
+                .datum(data)
+                .attr("fill", "none")
+                .attr("stroke", "steelblue")
+                .attr("stroke-width", 1.5)
+                .attr("d", d3.line()
+                    .x(function (d) { return scaleX(d.date) })
+                    .y(function (d) { return scaleY(d.weight) })
+                )
+        }
+
+        window.onload = function () {
+            console.log('loaded. showing graph');
+            showWeightChart();
+        }
+
+    </script>
+</body>
+
+</html>
