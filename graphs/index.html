@@ -31,21 +31,29 @@
 
         const self = this;
 
-        var margin = { top: 10, right: 30, bottom: 30, left: 60 },
-            width = 460 - margin.left - margin.right,
-            height = 400 - margin.top - margin.bottom;
+        const svgHeight = 400, titleHeight = 50, xaxisHeight = 40;
+        const svgWidth = 460, yaxisWidth = 35, rightMargin = 20;
+        
+        const plotHeight = svgHeight - titleHeight - xaxisHeight;
+        const plotWidth = svgWidth - yaxisWidth - rightMargin;
+        
+        // const margin = { top: 10, right: 30, bottom: 30, left: 60 },
+        //     width = 460 - margin.left - margin.right,
+        //     height = 400 - margin.top - margin.bottom;
 
         function appendGraphG(selector) {
             return d3.select("#my-graph")
                 .append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
+                .attr('id', 'pwl-svg')
+                .attr("width", svgWidth)
+                .attr("height", svgHeight)
                 .append("g")
+                .attr('id', 'plot-area')
                 .attr("transform",
-                    "translate(" + margin.left + "," + margin.top + ")");
+                    "translate(" + yaxisWidth + "," + titleHeight + ")");
         }
 
-        var svg = appendGraphG("#my-graph");
+        var graphG = appendGraphG("#my-graph");
 
         function str_to_float(str) {
             let num = parseFloat(str);
@@ -93,7 +101,7 @@
             }
 
             self.data = convertDates(data);
-            drawChart(self.svg, self.data);
+            drawChart(self.graphG, self.data);
         }
 
         function convertDates(data) {
@@ -114,12 +122,20 @@
                 return first.date.valueOf() - second.date.valueOf();
             })
 
+            d3.select('#pwl-svg')
+                .append('text')
+                .attr('x', svgWidth / 2)
+                .attr('y', titleHeight / 2)
+                .attr('text-anchor', 'middle')
+                .style('font-size', '20px')
+                .text('Track Your Progress')
+
             const scaleX = d3.scaleTime()
                 .domain(d3.extent(data, function (d) { return d.date; }))
-                .range([0, width]);
+                .range([0, plotWidth]);
             svg.append("g")
                 .attr('id', 'xaxis')
-                .attr("transform", "translate(0," + height + ")")
+                .attr("transform", "translate(0," + (plotHeight) + ")")
                 .call(d3.axisBottom(scaleX)
                     .tickFormat(d3.timeFormat('%b-%d'))
                     // .ticks(7)
@@ -129,12 +145,17 @@
             svg.select('#xaxis').selectAll('text')
                 .attr('text-anchor', 'end')
                 .attr('transform', 'rotate(-45)')
+                .style('font-size', '12px')
 
             const scaleY = d3.scaleLinear()
                 .domain([0, d3.max(data, function (d) { return +d.weight; })])
-                .range([height, 0]);
+                .range([plotHeight, 0]);
             svg.append("g")
+                .attr('id', 'yaxis')
                 .call(d3.axisLeft(scaleY));
+
+            svg.select('#yaxis').selectAll('text')
+                .style('font-size', '12px')
 
             svg.append("path")
                 .datum(data)
