@@ -118,12 +118,17 @@
                 .domain(d3.extent(data, function (d) { return d.date; }))
                 .range([0, width]);
             svg.append("g")
+                .attr('id', 'xaxis')
                 .attr("transform", "translate(0," + height + ")")
                 .call(d3.axisBottom(scaleX)
                     .tickFormat(d3.timeFormat('%b-%d'))
                     // .ticks(7)
                     // .tickArguments([d3.timeDay.every(1)])
                 );
+
+            svg.select('#xaxis').selectAll('text')
+                .attr('text-anchor', 'end')
+                .attr('transform', 'rotate(-45)')
 
             const scaleY = d3.scaleLinear()
                 .domain([0, d3.max(data, function (d) { return +d.weight; })])
