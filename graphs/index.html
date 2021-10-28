@@ -95,7 +95,7 @@
                 date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
                 const datum = {
                     "date": formatDate(date),
-                    "weight": 100 + Math.round(Math.random() * 100)
+                    "weight": 150 + Math.round(Math.random() * 25)
                 };
                 data.push(datum);
             }
@@ -147,12 +147,22 @@
                 .attr('transform', 'rotate(-45)')
                 .style('font-size', '12px')
 
+            const yMax = d3.max(data, function (d) { return +d.weight; });
+            const yMin = Math.min(
+                d3.min(data, d => {return +d.weight;}),
+                Math.max(100, yMax - 200));
+            const yMaxNice = Math.ceil(yMax / 5) * 5
+            const yMinNice = Math.floor(yMin / 5) * 5;
+
+            const yTicks = d3.range(yMinNice, yMaxNice + 5, 5);
             const scaleY = d3.scaleLinear()
-                .domain([0, d3.max(data, function (d) { return +d.weight; })])
+                .domain([yMinNice, yMaxNice])
                 .range([plotHeight, 0]);
             svg.append("g")
                 .attr('id', 'yaxis')
-                .call(d3.axisLeft(scaleY));
+                .call(d3.axisLeft(scaleY)
+                    .tickValues(yTicks)
+                    .tickSizeOuter(0));
 
             svg.select('#yaxis').selectAll('text')
                 .style('font-size', '12px')
