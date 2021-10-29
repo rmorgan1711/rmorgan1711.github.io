@@ -10,6 +10,31 @@
         svg {
             border: solid 1px gray;
         }
+        .input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        .btn {
+            border: none;
+            display: inline-block;
+            padding: 8px;
+            border-radius: 10px;
+            vertical-align: middle;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            background-color: inherit;
+            text-align: center;
+            cursor: pointer;
+            white-space: nowrap;
+            color: white;
+            background-color: #476b9b;
+            width: 17%;
+        }
+        .btn:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+        }
     </style>
 </head>
 
@@ -17,10 +42,11 @@
     <h3>Graph</h3>
 
     <div id="my-graph"></div>
-    <form id="weight-update-form" onsubmit="update_chart_data(event)">
-        <input id="pwl-date" type="date" />
-        <input id="pwl-weight" type="number" />
-        <button type="button" onclick="update_chart_data(event)">Update</button>
+    <form id="weight-update-form" onsubmit="update_chart_data(event)"
+        style="width:460px; display: flex; flex-wrap: nowrap; justify-content: space-between;">
+        <input id="pwl-date" class="input" style="width:28%;" type="date" />
+        <input id="pwl-weight" class="input" style="width:45%;" type="number" placeholder="Weight (blank to delete)" />
+        <button type="button" class="btn" onclick="update_chart_data(event)">Update</button>
     </form>
 
     <script>
@@ -33,13 +59,9 @@
 
         const svgHeight = 400, titleHeight = 50, xaxisHeight = 40;
         const svgWidth = 460, yaxisWidth = 35, rightMargin = 20;
-        
+
         const plotHeight = svgHeight - titleHeight - xaxisHeight;
         const plotWidth = svgWidth - yaxisWidth - rightMargin;
-        
-        // const margin = { top: 10, right: 30, bottom: 30, left: 60 },
-        //     width = 460 - margin.left - margin.right,
-        //     height = 400 - margin.top - margin.bottom;
 
         function appendGraphG(selector) {
             return d3.select("#my-graph")
@@ -149,8 +171,13 @@
 
             const yMax = d3.max(data, function (d) { return +d.weight; });
             const yMin = Math.min(
-                d3.min(data, d => {return +d.weight;}),
+                d3.min(data, d => { return +d.weight; }),
                 Math.max(100, yMax - 200));
+
+            console.log('yMax', yMax);
+            console.log('data min', d3.min(data, d => { return +d.weight; }));
+            console.log('other', Math.max(100, yMax - 200))
+            console.log('yMin', yMin);
             const yMaxNice = Math.ceil(yMax / 5) * 5
             const yMinNice = Math.floor(yMin / 5) * 5;
 
@@ -176,13 +203,15 @@
                     .x(function (d) { return scaleX(d.date) })
                     .y(function (d) { return scaleY(d.weight) })
                 )
-            
+
             svg.selectAll('dot')
                 .data(data)
                 .join('circle')
                 .attr('r', 5)
                 .attr('cx', d => scaleX(d.date))
                 .attr('cy', d => scaleY(d.weight))
+                .append('title')
+                .text((d) => `${timeFormatter(d.date)}\n${d.weight}`)
         }
 
         window.onload = function () {
