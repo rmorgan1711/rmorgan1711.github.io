@@ -10,11 +10,13 @@
         svg {
             border: solid 1px gray;
         }
+
         .input {
             padding: 8px;
             border: 1px solid #ccc;
             text-align: center;
         }
+
         .btn {
             border: none;
             display: inline-block;
@@ -32,8 +34,17 @@
             background-color: #476b9b;
             width: 17%;
         }
+
         .btn:hover {
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: white;
+            padding: 5px;
+            border-radius: 10px;
+            border: 1px solid black;
         }
     </style>
 </head>
@@ -42,6 +53,7 @@
     <h3>Graph</h3>
 
     <div id="my-graph"></div>
+    <div id="pwl-tooltip" class="tooltip" style="visibility: hidden;"></div>
     <form id="weight-update-form" onsubmit="update_chart_data(event)"
         style="width:460px; display: flex; flex-wrap: nowrap; justify-content: space-between;">
         <input id="pwl-date" class="input" style="width:28%;" type="date" />
@@ -92,7 +104,6 @@
 
             let date = d3.select('#pwl-date').node().value;
             date = d3.timeParse('%Y-%m-%d')(date)
-            console.log(date);
 
             const weight = str_to_float(d3.select('#pwl-weight').node().value);
             if (isNaN(weight)) { return; }
@@ -174,10 +185,6 @@
                 d3.min(data, d => { return +d.weight; }),
                 Math.max(100, yMax - 200));
 
-            console.log('yMax', yMax);
-            console.log('data min', d3.min(data, d => { return +d.weight; }));
-            console.log('other', Math.max(100, yMax - 200))
-            console.log('yMin', yMin);
             const yMaxNice = Math.ceil(yMax / 5) * 5
             const yMinNice = Math.floor(yMin / 5) * 5;
 
@@ -204,6 +211,9 @@
                     .y(function (d) { return scaleY(d.weight) })
                 )
 
+            const tooltip = d3.select('#pwl-tooltip')
+            const formatter = d3.timeFormat('%m/%d/%Y')
+
             svg.selectAll('dot')
                 .data(data)
                 .join('circle')
@@ -211,8 +221,25 @@
                 .attr('r', 7)
                 .attr('cx', d => scaleX(d.date))
                 .attr('cy', d => scaleY(d.weight))
-                .append('title')
-                .text((d) => `${timeFormatter(d.date)}\n${d.weight}`)
+                // .append('title')
+                // .text((d) => `${timeFormatter(d.date)}\n${d.weight}`)
+                .each(function (d) {
+                    
+                    const tipText = `<strong>${formatter(d.date)}</strong><br />${d.weight}`
+                    const dot = d3.select(this);
+                    dot
+                        .on('mouseover', function (event, d) {
+                            tooltip.style('visibility', 'visible')
+                        })
+                        .on('mousemove', function (d) {
+                            tooltip.html(tipText);
+                            tooltip.style('top', `${event.pageY - 55}px`)
+                                .style('left', `${event.pageX}px`)
+                        })
+                        .on('mouseleave', function (event, d) {
+                            tooltip.style('visibility', 'hidden')
+                        })
+                })
         }
 
         window.onload = function () {
