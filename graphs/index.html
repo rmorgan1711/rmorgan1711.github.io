@@ -105,14 +105,22 @@
             let date = d3.select('#pwl-date').node().value;
             date = d3.timeParse('%Y-%m-%d')(date)
 
-            const weight = str_to_float(d3.select('#pwl-weight').node().value);
-            if (isNaN(weight)) { return; }
-
-            let index = self.data.findIndex((e) => e.date.valueOf() === date.valueOf());
-            if (index === -1) {
-                self.data.push({ date: date, weight: weight });
+            const weight_str = d3.select('#pwl-weight').node().value;
+            const weight = str_to_float(weight_str);
+            if (weight_str && isNaN(weight)) {
+                return;
+            } else if (!weight_str) {
+                let index = self.data.findIndex((e) => e.date.valueOf() === date.valueOf());
+                if (index !== -1) {
+                    self.data.splice(index, 1);
+                }
             } else {
-                self.data[index].weight = weight;
+                let index = self.data.findIndex((e) => e.date.valueOf() === date.valueOf());
+                if (index === -1) {
+                    self.data.push({ date: date, weight: weight });
+                } else {
+                    self.data[index].weight = weight;
+                }
             }
 
             d3.select("#my-graph svg").remove();
@@ -166,25 +174,30 @@
             const scaleX = d3.scaleTime()
                 .domain(d3.extent(data, function (d) { return d.date; }))
                 .range([0, plotWidth]);
+
+            const dateRange = d3.extent(data, d => d.date);
+            const approxNumDays = (dateRange[1].valueOf() - dateRange[0].valueOf()) / 1000 / 60 / 60 / 24;
+
+            let xAxis = d3.axisBottom(scaleX)
+                .tickFormat(d3.timeFormat('%b-%d'));
+            if (approxNumDays <= 10) {
+                xAxis.ticks(d3.timeDay.every(1));
+            } else {
+                xAxis.ticks(8)
+            }
+
             svg.append("g")
                 .attr('id', 'xaxis')
                 .attr("transform", "translate(0," + (plotHeight) + ")")
-                .call(d3.axisBottom(scaleX)
-                    .tickFormat(d3.timeFormat('%b-%d'))
-                    // .ticks(7)
-                    // .tickArguments([d3.timeDay.every(1)])
-                );
+                .call(xAxis);
 
             svg.select('#xaxis').selectAll('text')
                 .attr('text-anchor', 'end')
                 .attr('transform', 'rotate(-45)')
                 .style('font-size', '12px')
 
-            const yMax = d3.max(data, function (d) { return +d.weight; });
-            const yMin = Math.min(
-                d3.min(data, d => { return +d.weight; }),
-                Math.max(100, yMax - 200));
-
+            const yMax = d3.max(data, function (d) { return +d.weight; }) + 10;
+            const yMin = d3.min(data, function (d) { return +d.weight; }) - 20;
             const yMaxNice = Math.ceil(yMax / 5) * 5
             const yMinNice = Math.floor(yMin / 5) * 5;
 
@@ -224,7 +237,7 @@
                 // .append('title')
                 // .text((d) => `${timeFormatter(d.date)}\n${d.weight}`)
                 .each(function (d) {
-                    
+
                     const tipText = `<strong>${formatter(d.date)}</strong><br />${d.weight}`
                     const dot = d3.select(this);
                     dot
