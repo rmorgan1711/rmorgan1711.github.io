@@ -52,6 +52,8 @@
 <body>
     <h3>Graph</h3>
 
+    <!-- <img src="logo.png"/>
+    <img src="data:image/png;base64," /> -->
     <div id="my-graph"></div>
     <div id="pwl-tooltip" class="tooltip" style="visibility: hidden;"></div>
     <form id="weight-update-form" onsubmit="update_chart_data(event)"
@@ -69,7 +71,7 @@
 
         const self = this;
 
-        const svgHeight = 400, titleHeight = 50, xaxisHeight = 40;
+        const svgHeight = 400, titleHeight = 35, xaxisHeight = 40;
         const svgWidth = 460, yaxisWidth = 35, rightMargin = 20;
 
         const plotHeight = svgHeight - titleHeight - xaxisHeight;
@@ -163,13 +165,28 @@
                 return first.date.valueOf() - second.date.valueOf();
             })
 
+            const titleG = d3.select('#pwl-svg')
+                .append('g')
+                .attr('id', 'pwl-title')
+                .attr('transform', 'translate(55,25)')
+            titleG.append('text')
+                .attr('text-anchor', 'start')
+                .attr('font-size', '25px')
+                .text('Track Your Progress With')
+            titleG.append('image')
+                .attr('height', 30)
+                .attr('x', 265)
+                .attr('y', -25)
+                .attr('xlink:href', 'logo.png')
+
             d3.select('#pwl-svg')
-                .append('text')
-                .attr('x', svgWidth / 2)
-                .attr('y', titleHeight / 2)
-                .attr('text-anchor', 'middle')
-                .style('font-size', '20px')
-                .text('Track Your Progress')
+                .append('image')
+                .attr('x', svgWidth / 5)
+                .attr('y', svgHeight * 2 / 3)
+                .attr('width', svgWidth * 3 / 5)
+                // .attr('xlink:href', 'data:image/png;base64,')
+                .attr('xlink:href', 'logo.png')
+                .attr('opacity', 0.2)
 
             const scaleX = d3.scaleTime()
                 .domain(d3.extent(data, function (d) { return d.date; }))
@@ -196,10 +213,10 @@
                 .attr('transform', 'rotate(-45)')
                 .style('font-size', '12px')
 
-            const yMax = d3.max(data, function (d) { return +d.weight; }) + 10;
-            const yMin = d3.min(data, function (d) { return +d.weight; }) - 20;
-            const yMaxNice = Math.ceil(yMax / 5) * 5
-            const yMinNice = Math.floor(yMin / 5) * 5;
+            const yMax = d3.max(data, function (d) { return +d.weight; });
+            const yMin = d3.min(data, function (d) { return +d.weight; });
+            const yMaxNice = Math.ceil(yMax / 5) * 5 + 10
+            const yMinNice = Math.floor(yMin / 5) * 5 - 20;
 
             const yTicks = d3.range(yMinNice, yMaxNice + 5, 5);
             const scaleY = d3.scaleLinear()
@@ -237,7 +254,6 @@
                 // .append('title')
                 // .text((d) => `${timeFormatter(d.date)}\n${d.weight}`)
                 .each(function (d) {
-
                     const tipText = `<strong>${formatter(d.date)}</strong><br />${d.weight}`
                     const dot = d3.select(this);
                     dot
