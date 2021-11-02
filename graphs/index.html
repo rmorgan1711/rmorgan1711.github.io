@@ -4,8 +4,6 @@
 <head>
     <title>Graph Demo</title>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <style>
         svg {
             border: solid 1px gray;
@@ -26,7 +24,6 @@
             overflow: hidden;
             text-decoration: none;
             color: inherit;
-            background-color: inherit;
             text-align: center;
             cursor: pointer;
             white-space: nowrap;
@@ -50,10 +47,6 @@
 </head>
 
 <body>
-    <h3>Graph</h3>
-
-    <!-- <img src="logo.png"/>
-    <img src="data:image/png;base64," /> -->
     <div id="my-graph"></div>
     <div id="pwl-tooltip" class="tooltip" style="visibility: hidden;"></div>
     <form id="weight-update-form" onsubmit="update_chart_data(event)"
@@ -65,17 +58,18 @@
 
     <script>
 
-        const timeFormatter = d3.timeFormat('%Y-%m-%d');
-        d3.select('#pwl-date')
-            .attr('value', timeFormatter(new Date()));
-
         const self = this;
+
+        const date_to_str = d3.timeFormat('%Y-%m-%d');
+        const str_to_date = d3.timeParse('%Y-%m-%d')
 
         const svgHeight = 400, titleHeight = 35, xaxisHeight = 40;
         const svgWidth = 460, yaxisWidth = 35, rightMargin = 20;
 
         const plotHeight = svgHeight - titleHeight - xaxisHeight;
         const plotWidth = svgWidth - yaxisWidth - rightMargin;
+
+        d3.select('#pwl-date').attr('value', date_to_str(new Date()));
 
         function appendGraphG(selector) {
             return d3.select("#my-graph")
@@ -89,15 +83,32 @@
                     "translate(" + yaxisWidth + "," + titleHeight + ")");
         }
 
-        var graphG = appendGraphG("#my-graph");
-
-        function str_to_float(str) {
-            let num = parseFloat(str);
-            if (!isNaN(num) && num.toString() === str && 1 < num && num < 2000) {
-                return num;
-            } else {
-                return NaN;
+        function showWeightChart() {
+            const data = [];
+            for (let i = 0; i < 15; i++) {
+                let date = new Date(Date.now() - (i * 2) * 1000 * 60 * 60 * 24)
+                date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                const datum = {
+                    "date": date_to_str(date),
+                    "weight": 150 + Math.round(Math.random() * 25)
+                };
+                data.push(datum);
             }
+
+            self.data = convertDates(data);
+            appendGraphG('#my-graph');
+            drawChart(self.data);
+        }
+
+        function convertDates(data) {
+            const new_dates = [];
+            for (let i = 0; i < data.length; i++) {
+                new_dates.push({
+                    date: str_to_date(data[i].date),
+                    weight: data[i].weight
+                })
+            }
+            return (new_dates);
         }
 
         function update_chart_data(event) {
@@ -105,7 +116,7 @@
             event.stopImmediatePropagation();
 
             let date = d3.select('#pwl-date').node().value;
-            date = d3.timeParse('%Y-%m-%d')(date)
+            date = str_to_date(date)
 
             const weight_str = d3.select('#pwl-weight').node().value;
             const weight = str_to_float(weight_str);
@@ -125,47 +136,28 @@
                 }
             }
 
-            d3.select("#my-graph svg").remove();
-            svg = appendGraphG('#my-graph');
-            drawChart(svg, self.data);
+            d3.select("#pwl-svg").remove();
+            appendGraphG('#my-graph');
+            drawChart(self.data);
         }
 
-        function showWeightChart() {
-            const data = [];
-            const formatDate = d3.timeFormat('%Y-%m-%dT%H:%M:%SZ');
-            for (let i = 0; i < 15; i++) {
-                let date = new Date(Date.now() - (i * 2) * 1000 * 60 * 60 * 24)
-                date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-                const datum = {
-                    "date": formatDate(date),
-                    "weight": 150 + Math.round(Math.random() * 25)
-                };
-                data.push(datum);
+        function str_to_float(str) {
+            let num = parseFloat(str);
+            if (!isNaN(num) && num.toString() === str && 1 < num && num < 2000) {
+                return num;
+            } else {
+                return NaN;
             }
-
-            self.data = convertDates(data);
-            drawChart(self.graphG, self.data);
         }
-
-        function convertDates(data) {
-            let dateParser = d3.timeParse('%Y-%m-%dT%H:%M:%SZ');
-            const new_dates = [];
-            for (let i = 0; i < data.length; i++) {
-                new_dates.push({
-                    date: dateParser(data[i].date),
-                    weight: data[i].weight
-                })
-            }
-            return (new_dates);
-        }
-
-        function drawChart(svg, data) {
+        
+        function drawChart(data) {
 
             data.sort((first, second) => {
                 return first.date.valueOf() - second.date.valueOf();
             })
 
-            const titleG = d3.select('#pwl-svg')
+            const svg = d3.select('#pwl-svg');
+            const titleG = svg
                 .append('g')
                 .attr('id', 'pwl-title')
                 .attr('transform', 'translate(55,25)')
@@ -179,14 +171,14 @@
                 .attr('y', -25)
                 .attr('xlink:href', 'logo.png')
 
-            d3.select('#pwl-svg')
+            svg
                 .append('image')
                 .attr('x', svgWidth / 5)
                 .attr('y', svgHeight * 2 / 3)
                 .attr('width', svgWidth * 3 / 5)
                 // .attr('xlink:href', 'data:image/png;base64,')
                 .attr('xlink:href', 'logo.png')
-                .attr('opacity', 0.2)
+                .attr('opacity', 0.25)
 
             const scaleX = d3.scaleTime()
                 .domain(d3.extent(data, function (d) { return d.date; }))
@@ -203,12 +195,14 @@
                 xAxis.ticks(8)
             }
 
-            svg.append("g")
+            const graphG = svg.select('#plot-area')
+
+            graphG.append("g")
                 .attr('id', 'xaxis')
                 .attr("transform", "translate(0," + (plotHeight) + ")")
                 .call(xAxis);
 
-            svg.select('#xaxis').selectAll('text')
+                graphG.select('#xaxis').selectAll('text')
                 .attr('text-anchor', 'end')
                 .attr('transform', 'rotate(-45)')
                 .style('font-size', '12px')
@@ -222,16 +216,16 @@
             const scaleY = d3.scaleLinear()
                 .domain([yMinNice, yMaxNice])
                 .range([plotHeight, 0]);
-            svg.append("g")
+                graphG.append("g")
                 .attr('id', 'yaxis')
                 .call(d3.axisLeft(scaleY)
                     .tickValues(yTicks)
                     .tickSizeOuter(0));
 
-            svg.select('#yaxis').selectAll('text')
+                    graphG.select('#yaxis').selectAll('text')
                 .style('font-size', '12px')
 
-            svg.append("path")
+                graphG.append("path")
                 .datum(data)
                 .attr("fill", "none")
                 .attr("stroke", "#f1c40f")
@@ -244,15 +238,13 @@
             const tooltip = d3.select('#pwl-tooltip')
             const formatter = d3.timeFormat('%m/%d/%Y')
 
-            svg.selectAll('dot')
+            graphG.selectAll('dot')
                 .data(data)
                 .join('circle')
                 .attr('fill', '#476b9b')
                 .attr('r', 7)
                 .attr('cx', d => scaleX(d.date))
                 .attr('cy', d => scaleY(d.weight))
-                // .append('title')
-                // .text((d) => `${timeFormatter(d.date)}\n${d.weight}`)
                 .each(function (d) {
                     const tipText = `<strong>${formatter(d.date)}</strong><br />${d.weight}`
                     const dot = d3.select(this);

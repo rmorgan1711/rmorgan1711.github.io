@@ -6,8 +6,10 @@ import base64
 
 #%%
 
-b64_str = None
+b64_utf8 = None
 with open('logo.png', 'rb') as img_file:
-    b64_str = base64.b64encode(img_file.read())
+    b64_bytes = base64.b64encode(img_file.read())
+    b64_utf8 = b64_bytes.decode('utf-8')
     
-print(b64_str)
+with open('logo_b64.txt', 'w') as f:
+    f.write(b64_utf8)
