@@ -6,16 +6,17 @@
 # https://ss64.com/osx/stat.html
 # https://stackoverflow.com/questions/13210880/replace-one-substring-for-another-string-in-shell-script
 
-dir=/Users/Bowen/Desktop/imports-2021-01-02
+dir=~/Desktop/the-relevant-folder
 
 find "$dir" -maxdepth 1 -type f | while IFS= read -r file; do
-    # file=${file/\.heic/\.HEIC}
-    # file=${file/\.jpeg/\.JPG}
-    # file=${file/\.png/\.PNG}
-    # echo $file
 
-    year=$(stat -f "%Sm" -t "%Y" "$file")
-    month=$(stat -f "%Sm" -t "%m" "$file")
+    year=$(stat -f "%SB" -t "%Y" "$file")
+    month=$(stat -f "%SB" -t "%m" "$file")
     [[ ! -d "$dir/$year/$month" ]] && mkdir -p "$dir/$year/$month"; 
     mv "$file" "$dir/$year/$month"
 done
+
+# pic-migrate/ contains folders of years of photos
+# trailing slash is important in cp command
+cd /Volumes/device-name/pics-vids-music
+cp -Rnp /Users/Bowen/Desktop/pic-migrate/ Pictures
