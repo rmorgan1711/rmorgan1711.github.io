@@ -1,6 +1,5 @@
-- rename pics-vids-music-2021-01-02
-- baby video
-- rename and move old iphoto album, iPhoto Library-jon-2011-11-to-2013-09
+# Notes
 
-- copy current Photos library, Photos Library-jon-2017-07-to-2025-02.photoslibrary
-
+- last backup in mid-Feb
+- some issue restoring edits in .aae files on re-import to Photos
+- also now backing up whole .photoslibrary Photos file
