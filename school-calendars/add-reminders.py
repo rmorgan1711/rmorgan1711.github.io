@@ -5,6 +5,8 @@ from pathlib import Path
 import csv
 import zoneinfo
 
+cal_out_path = Path("./St Ann School Calendar.ics")
+
 data_path = Path("./St Ann School Calendar.csv")
 event_data = []
 with open(data_path, 'r') as f:
@@ -27,15 +29,15 @@ cal.add("summary", "St Ann School Calendar")
 
 event_dict = event_data[0]
 for event_dict in event_data:
-    dt_start = datetime.strptime(event_dict['Start Date'], date_fmt).date()
-    dt_end = datetime.strptime(event_dict['End Date'], date_fmt).date()
+    dt_start = datetime.strptime(event_dict['Start Date'], date_fmt)
+    dt_end = datetime.strptime(event_dict['End Date'], date_fmt)
 
     if event_dict['All Day Event'] != 'TRUE':
         start_time = datetime.strptime(event_dict['Start Time'], time_fmt).time()
         end_time = datetime.strptime(event_dict['End Time'], time_fmt).time()
 
-        dt_start = datetime.combine(dt_start, start_time)
-        dt_end = datetime.combine(dt_end, end_time)      
+        dt_start = datetime.combine(dt_start.date(), start_time)
+        dt_end = datetime.combine(dt_end.date(), end_time)      
     else:
         dt_end = dt_end + timedelta(days=1)
 
@@ -62,23 +64,12 @@ for event_dict in event_data:
 
     cal.add_component(event)
 
+with open(cal_out_path, 'wb') as f:
+    f.write(cal.to_ical())
+
 
 ics_path = Path("./St Ann School Calendar.ics")
 calendar = icalendar.Calendar.from_ical(ics_path.read_bytes())
 for event in calendar.events:
     print(event.get("SUMMARY"))
 
-
-event = calendar.events[0]
-event.start
-
-for a in event.walk("VALARM"):
-    print(a.get("description"))
-
-
-
-alarm_1h_before = Alarm()
-alarm_1h_before.add('action', 'DISPLAY')
-alarm_1h_before.add('trigger', timedelta(hours=-1))
-alarm_1h_before.add('description', 'Reminder: Event in 1 hour')
-event.add_component(alarm_1h_before)
