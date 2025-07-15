@@ -1,5 +1,5 @@
 import icalendar
-from icalendar import Calendar, Event, Alarm
+from icalendar import Calendar, Event, Alarm, Timezone, TimezoneStandard, TimezoneDaylight
 from datetime import timedelta, datetime
 from pathlib import Path
 import csv
@@ -19,15 +19,35 @@ CT = zoneinfo.ZoneInfo("America/Chicago")
 date_fmt = "%m/%d/%Y"
 time_fmt = "%I:%M %p"
 
-
 cal = Calendar()
 cal.add("prodid", "-//Microsoft Corporation//Outlook 16.0 MIMEDIR//EN")
 cal.add("version", "2.0")
-
 cal.add("X-WR-CALNAME", "St Ann School Calendar")
 cal.add("summary", "St Ann School Calendar")
 
-event_dict = event_data[0]
+
+tz = Timezone()
+tz.add('tzid', 'America/Chicago')
+
+standard = TimezoneStandard()
+standard.add('dtstart', datetime(2025, 11, 2, 2, 0, 0))
+standard.add('tzoffsetfrom', timedelta(hours=-5))
+standard.add('tzoffsetto', timedelta(hours=-6))
+standard.add('rrule', {'freq': 'yearly', 'bymonth': 11, 'byday': '1SU'})
+standard.add('tzname', 'CST')
+tz.add_component(standard)
+
+daylight = TimezoneDaylight()
+daylight.add('dtstart', datetime(2025, 3, 9, 2, 0, 0))
+daylight.add('tzoffsetfrom', timedelta(hours=-6))
+daylight.add('tzoffsetto', timedelta(hours=-5))
+daylight.add('rrule', {'freq': 'yearly', 'bymonth': 3, 'byday': '2SU'})
+daylight.add('tzname', 'CDT')
+tz.add_component(daylight)
+
+cal.add_component(tz)
+
+event_dict = event_data[1]
 for event_dict in event_data:
     dt_start = datetime.strptime(event_dict['Start Date'], date_fmt)
     dt_end = datetime.strptime(event_dict['End Date'], date_fmt)
@@ -46,7 +66,8 @@ for event_dict in event_data:
 
     event = Event()
     event.add('summary', event_dict['Subject'])
-
+    event.add('categories', 'Kids')
+    event.add('X-MICROSOFT-CDO-BUSYSTATUS', 'OOF')
     event.add('dtstart', dt_start)
     event.add('dtend',  dt_end)
 
