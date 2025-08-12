@@ -5,6 +5,24 @@ from pathlib import Path
 import csv
 import zoneinfo
 
+
+def hours_to_human_desc(description: str, hours: int) -> str:
+    """Convert hours to a human-readable string in days and hours."""
+    days = int(hours) // 24
+    hrs = int(hours) % 24
+    result = []
+    if days > 0:
+        result = f"{days} day{'s' if days != 1 else ''} "
+        if hrs > 0:
+            result += f"{hrs} hour{'s' if hrs != 1 else ''} "
+        result += f"to {description}"
+    else:
+        result = f"{hrs} hour{'s' if hrs != 1 else ''} "
+        result += f"to {description}"
+
+    return result
+    
+
 cal_out_path = Path("./St Ann School Calendar.ics")
 
 data_path = Path("./St Ann School Calendar.csv")
@@ -47,7 +65,6 @@ tz.add_component(daylight)
 
 cal.add_component(tz)
 
-event_dict = event_data[1]
 for event_dict in event_data:
     dt_start = datetime.strptime(event_dict['Start Date'], date_fmt)
     dt_end = datetime.strptime(event_dict['End Date'], date_fmt)
@@ -67,21 +84,36 @@ for event_dict in event_data:
     event = Event()
     event.add('summary', event_dict['Subject'])
     event.add('categories', 'Kids')
-    event.add('X-MICROSOFT-CDO-BUSYSTATUS', 'OOF')
+    event.add('X-MICROSOFT-CDO-BUSYSTATUS', event_dict['X-MICROSOFT-CDO-BUSYSTATUS'])
     event.add('dtstart', dt_start)
     event.add('dtend',  dt_end)
 
     alarm_1 = Alarm()
     alarm_1.add('action', 'DISPLAY')
-    alarm_1.add('trigger', timedelta(hours=-(7*24)))
-    alarm_1.add('description', f"7 days to {event_dict['Subject']}")
+    if event_dict['Alarm Hours Before 1'] != '':
+        hours_before = float(event_dict['Alarm Hours Before 1'])
+        desc = hours_to_human_desc(event_dict['Subject'], hours_before)
+
+        alarm_1.add('trigger', timedelta(hours=-(7*hours_before)))
+        alarm_1.add('description', desc)
+    else:
+        alarm_1.add('trigger', timedelta(hours=-(7*24)))
+        alarm_1.add('description', f"7 days to {event_dict['Subject']}")
+    
     event.add_component(alarm_1)
 
     alarm_2 = Alarm()
     alarm_2.add('action', 'DISPLAY')
-    alarm_2.add('trigger', timedelta(hours=-24))
-    alarm_2.add('description', f"TOMORROW: {event_dict['Subject']}")
-    event.add_component(alarm_1)
+    if event_dict['Alarm Hours Before 2'] != '':
+        hours_before = float(event_dict['Alarm Hours Before 2'])
+        desc = hours_to_human_desc(event_dict['Subject'], hours_before)
+
+        alarm_2.add('trigger', timedelta(hours=-(7*hours_before)))
+        alarm_2.add('description', desc)
+    else:
+        alarm_2.add('trigger', timedelta(hours=-24))
+        alarm_2.add('description', f"TOMORROW: {event_dict['Subject']}")
+        event.add_component(alarm_1)
 
     cal.add_component(event)
 
