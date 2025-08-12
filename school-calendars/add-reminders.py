@@ -65,7 +65,6 @@ tz.add_component(daylight)
 
 cal.add_component(tz)
 
-event_dict = event_data[1]
 for event_dict in event_data:
     dt_start = datetime.strptime(event_dict['Start Date'], date_fmt)
     dt_end = datetime.strptime(event_dict['End Date'], date_fmt)
