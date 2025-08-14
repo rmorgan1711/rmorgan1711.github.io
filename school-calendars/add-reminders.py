@@ -25,7 +25,7 @@ def hours_to_human_desc(description: str, hours: int) -> str:
 
 cal_out_path = Path("./St Ann School Calendar.ics")
 
-data_path = Path("./St Ann School Calendar.csv")
+data_path = Path("./St Ann School Calendar curated.csv")
 event_data = []
 with open(data_path, 'r') as f:
     csv_dict_reader = csv.DictReader(f)
