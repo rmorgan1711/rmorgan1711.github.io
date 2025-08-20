@@ -22,8 +22,8 @@ def vevent_props_to_str(v):
     return v_str
        
 
-ics_path = Path("St Ann Official Calendar.ics")
-csv_path = Path("St Ann Official Calendar Export.csv")
+ics_path = Path("St Ann Official Calendar 2025-08-19.ics")
+csv_path = Path("St Ann Official Calendar Export 2025-08-19.csv")
 
 calendar = icalendar.Calendar.from_ical(ics_path.read_bytes())
 

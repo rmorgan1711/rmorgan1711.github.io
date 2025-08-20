@@ -1,0 +1,200 @@
+﻿DESCRIPTION,DTEND,DTSTAMP,DTSTART,EXDATE,RRULE,SUMMARY,UID
+,2025-10-16,2025-08-19 17:42:59,2025-10-15,,,Early Dismissal 11:45 AM (K-8),2156516@school.stannpv.org
+"Every 4th Monday of the month, St. Ann Parish serves the hungry a hot lunch at the St. Mary's Food Kitchen",2025-08-25 09:30:00,2025-08-19 17:42:59,2025-08-25 08:30:00,"vDDDLists([vDDDTypes(2023-12-25 08:30:00, Parameters({}))])","vRecur({'FREQ': ['MONTHLY'], 'BYDAY': ['MO'], 'BYSETPOS': [4]})",St. Mary's Food Kitchen,2160836@school.stannpv.org
+,2025-08-21 19:00:00,2025-08-19 17:42:59,2025-08-21 18:00:00,,,K - 8 Back to School Night,2391417@school.stannpv.org
+,2025-09-02,2025-08-19 17:42:59,2025-09-01,,,Closed YCC & School| Labor Day,2391484@school.stannpv.org
+,2025-10-17,2025-08-19 17:42:59,2025-10-16,,,YCC & K-8 Fall Conferences | No School,2391501@school.stannpv.org
+,2025-10-18,2025-08-19 17:42:59,2025-10-17,,,No School | YCC & K-8,2391504@school.stannpv.org
+,2025-11-25,2025-08-19 17:42:59,2025-11-24,,,Thanksgiving Break | YCC & K-8,2391509@school.stannpv.org
+,2026-04-25,2025-08-19 17:42:59,2026-04-24,,,No School | YCC & K-8,2391576@school.stannpv.org
+,2026-05-20,2025-08-19 17:42:59,2026-05-19,,,Last Day of School Grades 1-7,2391598@school.stannpv.org
+,2025-11-07 12:45:00,2025-08-19 17:42:59,2025-11-07 11:45:00,,,Early Dismissal (K-8),2395380@school.stannpv.org
+,2025-08-20 09:15:00,2025-08-19 17:42:59,2025-08-20 08:15:00,"vDDDLists([vDDDTypes(2024-10-16 08:15:00, Parameters({})), vDDDTypes(2024-10-30 08:15:00, Parameters({})), vDDDTypes(2024-11-13 08:15:00, Parameters({})), vDDDTypes(2024-12-11 08:15:00, Parameters({})), vDDDTypes(2024-12-25 08:15:00, Parameters({})), vDDDTypes(2025-01-01 08:15:00, Parameters({})), vDDDTypes(2025-02-19 08:15:00, Parameters({})), vDDDTypes(2025-03-05 08:15:00, Parameters({})), vDDDTypes(2025-03-19 08:15:00, Parameters({})), vDDDTypes(2025-04-30 08:15:00, Parameters({})), vDDDTypes(2025-06-04 08:15:00, Parameters({})), vDDDTypes(2025-06-11 08:15:00, Parameters({})), vDDDTypes(2025-06-18 08:15:00, Parameters({})), vDDDTypes(2025-06-25 08:15:00, Parameters({})), vDDDTypes(2025-07-02 08:15:00, Parameters({})), vDDDTypes(2025-07-09 08:15:00, Parameters({})), vDDDTypes(2025-07-16 08:15:00, Parameters({})), vDDDTypes(2025-07-23 08:15:00, Parameters({})), vDDDTypes(2025-07-30 08:15:00, Parameters({})), vDDDTypes(2025-08-06 08:15:00, Parameters({})), vDDDTypes(2025-08-13 08:15:00, Parameters({})), vDDDTypes(2025-09-24 08:15:00, Parameters({})), vDDDTypes(2025-11-05 08:15:00, Parameters({})), vDDDTypes(2025-11-19 08:15:00, Parameters({})), vDDDTypes(2025-11-26 08:15:00, Parameters({})), vDDDTypes(2025-12-10 08:15:00, Parameters({})), vDDDTypes(2025-12-24 08:15:00, Parameters({})), vDDDTypes(2025-12-31 08:15:00, Parameters({})), vDDDTypes(2026-02-18 08:15:00, Parameters({})), vDDDTypes(2026-03-18 08:15:00, Parameters({}))])","vRecur({'FREQ': ['WEEKLY'], 'BYDAY': ['WE']})",Mass,2536230@school.stannpv.org
+,2025-08-23 17:00:00,2025-08-19 17:42:59,2025-08-23 16:00:00,"vDDDLists([vDDDTypes(2025-04-19 16:00:00, Parameters({})), vDDDTypes(2026-04-04 16:00:00, Parameters({}))])","vRecur({'FREQ': ['WEEKLY'], 'BYDAY': ['SA']})",Mass,2536259@school.stannpv.org
+,2025-08-24 10:00:00,2025-08-19 17:42:59,2025-08-24 09:00:00,,"vRecur({'FREQ': ['WEEKLY'], 'BYDAY': ['SU']})",Mass,2536260@school.stannpv.org
+,2025-08-24 11:30:00,2025-08-19 17:42:59,2025-08-24 10:30:00,,"vRecur({'FREQ': ['WEEKLY'], 'BYDAY': ['SU']})",Mass,2536261@school.stannpv.org
+,2025-08-24 08:30:00,2025-08-19 17:42:59,2025-08-24 07:45:00,"vDDDLists([vDDDTypes(2025-06-22 07:45:00, Parameters({})), vDDDTypes(2025-07-20 07:45:00, Parameters({})), vDDDTypes(2025-07-27 07:45:00, Parameters({}))])","vRecur({'FREQ': ['WEEKLY'], 'BYDAY': ['SU']})",Mass,2711944@school.stannpv.org
+,2025-08-24 18:00:00,2025-08-19 17:42:59,2025-08-24 17:00:00,"vDDDLists([vDDDTypes(2025-03-02 17:00:00, Parameters({})), vDDDTypes(2025-07-20 17:00:00, Parameters({})), vDDDTypes(2025-07-27 17:00:00, Parameters({}))])","vRecur({'FREQ': ['WEEKLY'], 'BYDAY': ['SU']})",Mass,2711946@school.stannpv.org
+,2025-09-20,2025-08-19 17:42:59,2025-09-19,,,K-8 No School - School of Faith,2807585@school.stannpv.org
+,2025-10-04,2025-08-19 17:42:59,2025-10-03,,,YCC & K-8 No School,2807586@school.stannpv.org
+,2025-10-05,2025-08-19 17:42:59,2025-10-04,,,Ave St. Ann - A Night to Remember (used to be called Fall Festival),2807587@school.stannpv.org
+,2025-11-26,2025-08-19 17:42:59,2025-11-25,,,Thanksgiving Break | YCC & K-8,2807602@school.stannpv.org
+,2025-11-27,2025-08-19 17:42:59,2025-11-26,,,Thanksgiving Break | YCC & K-8,2807603@school.stannpv.org
+,2025-11-28,2025-08-19 17:42:59,2025-11-27,,,Thanksgiving Break | YCC & K-8,2807604@school.stannpv.org
+,2025-11-29,2025-08-19 17:42:59,2025-11-28,,,Thanksgiving Break | YCC & K-8,2807605@school.stannpv.org
+,2025-12-19 12:30:00,2025-08-19 17:42:59,2025-12-19 11:30:00,,,YCC Early Dismissal Christmas Break Begins,2807610@school.stannpv.org
+,2025-12-23,2025-08-19 17:42:59,2025-12-22,,,Christmas Break (YCC & K-8),2807612@school.stannpv.org
+,2026-01-07,2025-08-19 17:42:59,2026-01-06,,,School Resumes (YCC & K-8),2807617@school.stannpv.org
+,2025-12-24,2025-08-19 17:42:59,2025-12-23,,,Christmas Break (YCC & K-8),2807620@school.stannpv.org
+,2025-12-25,2025-08-19 17:42:59,2025-12-24,,,Christmas Break (YCC & K-8),2807621@school.stannpv.org
+,2025-12-26,2025-08-19 17:42:59,2025-12-25,,,Christmas Break (YCC & K-8),2807622@school.stannpv.org
+,2025-12-27,2025-08-19 17:42:59,2025-12-26,,,Christmas Break (YCC & K-8),2807623@school.stannpv.org
+,2025-12-30,2025-08-19 17:42:59,2025-12-29,,,Christmas Break (YCC & K-8),2807625@school.stannpv.org
+,2025-12-31,2025-08-19 17:42:59,2025-12-30,,,Christmas Break (YCC & K-8),2807626@school.stannpv.org
+,2026-01-01,2025-08-19 17:42:59,2025-12-31,,,Christmas Break (YCC & K-8),2807628@school.stannpv.org
+,2026-01-06,2025-08-19 17:42:59,2026-01-05,,,Christmas Break (YCC & K-8),2807630@school.stannpv.org
+,2026-01-02,2025-08-19 17:42:59,2026-01-01,,,Christmas Break (YCC & K-8),2807633@school.stannpv.org
+,2026-01-03,2025-08-19 17:42:59,2026-01-02,,,Christmas Break (YCC & K-8),2807635@school.stannpv.org
+,2026-01-20,2025-08-19 17:42:59,2026-01-19,,,"No School & YCC Closed | Martin Luther King, Jr. Day",2807644@school.stannpv.org
+,2026-01-31,2025-08-19 17:42:59,2026-01-30,,,11:45 AM Early Dismissal (K-8),2807645@school.stannpv.org
+,2026-01-27,2025-08-19 17:42:59,2026-01-26,,,Catholic Schools Week,2807646@school.stannpv.org
+,2026-01-28,2025-08-19 17:42:59,2026-01-27,,,Catholic Schools Week,2807647@school.stannpv.org
+,2026-01-29,2025-08-19 17:42:59,2026-01-28,,,Catholic Schools Week,2807648@school.stannpv.org
+,2026-01-30,2025-08-19 17:42:59,2026-01-29,,,Catholic Schools Week,2807649@school.stannpv.org
+,2026-01-31,2025-08-19 17:42:59,2026-01-30,,,Catholic Schools Week,2807650@school.stannpv.org
+,2026-05-08 11:00:00,2025-08-19 17:42:59,2026-05-08 10:00:00,,,8th Grade Clap Out,2807652@school.stannpv.org
+,2026-05-13 20:00:00,2025-08-19 17:42:59,2026-05-13 19:00:00,,,8th Grade Graduation,2807653@school.stannpv.org
+,2026-05-20,2025-08-19 17:42:59,2026-05-19,,,9:30 AM Dismissal,2807654@school.stannpv.org
+,2026-05-01 10:00:00,2025-08-19 17:42:59,2026-05-01 09:00:00,,,May Crowning,2807656@school.stannpv.org
+,2026-05-16,2025-08-19 17:42:59,2026-05-15,,,Field Day K-7,2807657@school.stannpv.org
+,2026-04-24,2025-08-19 17:42:59,2026-04-23,,,Tiger Trot & Tiny Trot,2807661@school.stannpv.org
+,2026-04-03,2025-08-19 17:42:59,2026-04-02,,,No School & YCC Closed | Holy Thursday,2807663@school.stannpv.org
+,2026-04-04,2025-08-19 17:42:59,2026-04-03,,,No School & YCC Closed | Good Friday,2807664@school.stannpv.org
+,2026-04-04 22:30:00,2025-08-19 17:42:59,2026-04-04 20:30:00,,,Easter Vigil,2807665@school.stannpv.org
+,2026-04-07,2025-08-19 17:42:59,2026-04-06,,,No School & YCC Closed | Easter Break,2807667@school.stannpv.org
+,2026-05-08,2025-08-19 17:42:59,2026-05-07,,,Last Full Day for 8th Graders,2807670@school.stannpv.org
+,2026-03-17,2025-08-19 17:42:59,2026-03-16,,,No School & YCC Closed | Spring Break,2807672@school.stannpv.org
+,2026-03-18,2025-08-19 17:42:59,2026-03-17,,,No School & YCC Closed | Spring Break,2807674@school.stannpv.org
+,2026-03-19,2025-08-19 17:42:59,2026-03-18,,,No School & YCC Closed | Spring Break,2807675@school.stannpv.org
+,2026-03-20,2025-08-19 17:42:59,2026-03-19,,,No School & YCC Closed | Spring Break,2807677@school.stannpv.org
+,2026-03-21,2025-08-19 17:42:59,2026-03-20,,,No School & YCC Closed | Spring Break,2807678@school.stannpv.org
+,2026-03-13 12:45:00,2025-08-19 17:42:59,2026-03-13 11:45:00,,,1-8 Early Dismissal,2807683@school.stannpv.org
+,2026-02-27 12:45:00,2025-08-19 17:42:59,2026-02-27 11:45:00,,,K-8 Early Dismissal,2807686@school.stannpv.org
+,2026-02-17,2025-08-19 17:42:59,2026-02-16,,,No School & YCC Closed | President's Day,2807688@school.stannpv.org
+,2026-02-14,2025-08-19 17:42:59,2026-02-13,,,YCC & K- 8 Spring Conferences | No School,2807690@school.stannpv.org
+,2026-02-13,2025-08-19 17:42:59,2026-02-12,,,11:45 AM Early Dismissal (K-8),2807692@school.stannpv.org
+,2025-08-20,2025-08-19 17:42:59,2025-08-19,,,KDO - Early dismissal all week at 11:30 AM,2807741@school.stannpv.org
+,2025-08-21,2025-08-19 17:42:59,2025-08-20,,,KDO - Early dismissal all week at 11:30 AM,2807742@school.stannpv.org
+,2025-08-22,2025-08-19 17:42:59,2025-08-21,,,KDO - Early dismissal all week at 11:30 AM,2807743@school.stannpv.org
+,2025-08-23,2025-08-19 17:42:59,2025-08-22,,,KDO - Early dismissal all week at 11:30 AM,2807744@school.stannpv.org
+,2025-08-19 19:00:00,2025-08-19 17:42:59,2025-08-19 18:00:00,,,YCC Back to School Night,2807746@school.stannpv.org
+,2025-10-02 19:00:00,2025-08-19 17:42:59,2025-10-02 18:00:00,,,Preschool Mom's Night Out,2807760@school.stannpv.org
+,2025-11-07 12:30:00,2025-08-19 17:42:59,2025-11-07 11:30:00,,,YCC Early Dismissal,2807765@school.stannpv.org
+,2025-12-19 12:45:00,2025-08-19 17:42:59,2025-12-19 11:45:00,,,K-8 Early Dismissal Christmas Break Begins,2807768@school.stannpv.org
+,2026-01-31,2025-08-19 17:42:59,2026-01-30,,,YCC 11:30 AM Early Dismissal,2807776@school.stannpv.org
+,2026-02-27 12:30:00,2025-08-19 17:42:59,2026-02-27 11:30:00,,,YCC Early Dismissal,2807782@school.stannpv.org
+,2026-03-12 19:00:00,2025-08-19 17:42:59,2026-03-12 18:00:00,,,Preschool Dad's Night Out,2807786@school.stannpv.org
+,2026-03-13 12:30:00,2025-08-19 17:42:59,2026-03-13 11:30:00,,,YCC Early Dismissal,2807789@school.stannpv.org
+,2026-05-16,2025-08-19 17:42:59,2026-05-15,,,YCC Last Day of School,2807792@school.stannpv.org
+,2025-08-19 20:00:00,2025-08-19 17:42:59,2025-08-19 19:00:00,,,PTO Meeting,2826071@school.stannpv.org
+,2025-08-26,2025-08-19 17:42:59,2025-08-25,,,My Hot Lunch Box,2826072@school.stannpv.org
+,2025-08-26 21:00:00,2025-08-19 17:42:59,2025-08-26 18:00:00,,,VIRTUS Training,2826075@school.stannpv.org
+,2025-08-27 20:00:00,2025-08-19 17:42:59,2025-08-27 17:00:00,,,Culver's Spirit Night,2826076@school.stannpv.org
+,2025-09-06,2025-08-19 17:42:59,2025-09-05,,,Spirit Day & Spirit Day Cafe,2826077@school.stannpv.org
+,2025-09-09,2025-08-19 17:42:59,2025-09-08,,,My Hot Lunch Box,2826078@school.stannpv.org
+,2025-09-10 10:00:00,2025-08-19 17:42:59,2025-09-10 09:00:00,,,Moms in Prayer,2826082@school.stannpv.org
+,2025-09-16 20:00:00,2025-08-19 17:42:59,2025-09-16 19:00:00,,,PTO Meeting,2826085@school.stannpv.org
+,2025-09-18 10:00:00,2025-08-19 17:42:59,2025-09-18 09:00:00,,,School Council,2826087@school.stannpv.org
+,2025-09-18 21:00:00,2025-08-19 17:42:59,2025-09-18 17:00:00,,,Wing Stand Spirit Night,2826088@school.stannpv.org
+,2025-09-20,2025-08-19 17:42:59,2025-09-19,,,1st Quarter Progress Reports,2826090@school.stannpv.org
+,2025-09-23,2025-08-19 17:42:59,2025-09-22,,,My Hot Lunch Box,2826091@school.stannpv.org
+,2025-09-23 15:30:00,2025-08-19 17:42:59,2025-09-23 08:00:00,,,Picture Day,2826094@school.stannpv.org
+,2025-09-26 09:15:00,2025-08-19 17:42:59,2025-09-26 08:15:00,,,Mass,2826095@school.stannpv.org
+,2025-09-30 10:30:00,2025-08-19 17:42:59,2025-09-30 09:15:00,,,Happy Bear - K and 1st Grade,2826098@school.stannpv.org
+,2025-09-07 20:00:00,2025-08-19 17:42:59,2025-09-07 18:00:00,,,Parish Picnic,2826100@school.stannpv.org
+,2025-10-07 10:00:00,2025-08-19 17:42:59,2025-10-07 09:30:00,,"vRecur({'FREQ': ['WEEKLY'], 'UNTIL': [datetime.date(2025, 10, 29)], 'BYDAY': ['TU']})",Rosary,2826103@school.stannpv.org
+,2025-10-11,2025-08-19 17:42:59,2025-10-10,,,End of 1st Quarter,2826106@school.stannpv.org
+,2025-10-11,2025-08-19 17:42:59,2025-10-10,,,Spirit Day & Spirit Day Cafe,2826108@school.stannpv.org
+,2025-10-11,2025-08-19 17:42:59,2025-10-10,,,Walk and Roll to School,2826109@school.stannpv.org
+,2025-10-11,2025-08-19 17:42:59,2025-10-10,,,Chat & Chew,2826112@school.stannpv.org
+,2025-10-14,2025-08-19 17:42:59,2025-10-13,,,My Hot Lunch Box,2826113@school.stannpv.org
+,2025-10-14 20:00:00,2025-08-19 17:42:59,2025-10-14 19:00:00,,,PTO Meeting,2826115@school.stannpv.org
+,2025-10-23 10:00:00,2025-08-19 17:42:59,2025-10-23 09:00:00,,,School Council,2826116@school.stannpv.org
+,2025-10-24 20:30:00,2025-08-19 17:42:59,2025-10-24 16:00:00,,,Trunk or Treat,2826118@school.stannpv.org
+,2025-10-28,2025-08-19 17:42:59,2025-10-27,,,My Hot Lunch Box,2826119@school.stannpv.org
+,2025-10-31 15:10:00,2025-08-19 17:42:59,2025-10-31 14:10:00,,,Halloween Parade K-2nd,2826121@school.stannpv.org
+,2025-10-31 15:30:00,2025-08-19 17:42:59,2025-10-31 14:30:00,,,Halloween Parties,2826123@school.stannpv.org
+,2025-11-02,2025-08-19 17:42:59,2025-11-01,,,All Saints Day,2826127@school.stannpv.org
+,2025-11-04 10:00:00,2025-08-19 17:42:59,2025-11-04 09:00:00,,,Picture Retakes,2826129@school.stannpv.org
+,2025-11-07 09:15:00,2025-08-19 17:42:59,2025-11-07 08:15:00,,,Mass,2826130@school.stannpv.org
+,2025-11-11,2025-08-19 17:42:59,2025-11-10,,,My Hot Lunch Box,2826132@school.stannpv.org
+,2025-11-11 14:30:00,2025-08-19 17:42:59,2025-11-11 13:30:00,,,Veteran's Day Concert (4th - 6th Grade),2826134@school.stannpv.org
+,2025-11-11 19:30:00,2025-08-19 17:42:59,2025-11-11 18:30:00,,,Veteran's Day Concert (4th - 6th Grade),2826135@school.stannpv.org
+,2025-11-12 10:00:00,2025-08-19 17:42:59,2025-11-12 09:00:00,,,Moms In Prayer,2826138@school.stannpv.org
+,2025-11-13 20:00:00,2025-08-19 17:42:59,2025-11-13 19:00:00,,,First Reconciliation,2826144@school.stannpv.org
+,2025-11-15,2025-08-19 17:42:59,2025-11-14,,,Spirit Day & Spirit Day Cafe,2826146@school.stannpv.org
+,2025-11-17,2025-08-19 17:42:59,2025-11-16,,,Book Fair,2826151@school.stannpv.org
+,2025-11-18,2025-08-19 17:42:59,2025-11-17,,,Book Fair,2826152@school.stannpv.org
+,2025-11-19,2025-08-19 17:42:59,2025-11-18,,,Book Fair,2826153@school.stannpv.org
+,2025-11-20,2025-08-19 17:42:59,2025-11-19,,,Book Fair,2826154@school.stannpv.org
+,2025-11-21,2025-08-19 17:42:59,2025-11-20,,,Book Fair,2826155@school.stannpv.org
+,2025-11-22,2025-08-19 17:42:59,2025-11-21,,,Last Day for Shorts,2826158@school.stannpv.org
+,2025-11-21 09:15:00,2025-08-19 17:42:59,2025-11-21 08:15:00,,,Mass,2826159@school.stannpv.org
+,2025-11-22,2025-08-19 17:42:59,2025-11-21,,,2nd Quarter Progress Reports,2826160@school.stannpv.org
+,2025-12-06,2025-08-19 17:42:59,2025-12-05,,,Spirit Day & Spirit Day Cafe,2828059@school.stannpv.org
+,2025-12-06,2025-08-19 17:42:59,2025-12-05,,,Chat & Chew,2828061@school.stannpv.org
+,2025-12-08 09:15:00,2025-08-19 17:42:59,2025-12-08 08:15:00,,,Feast of the Immaculate Conception,2828065@school.stannpv.org
+,2025-12-09,2025-08-19 17:42:59,2025-12-08,,,My Hot Lunch Box,2828066@school.stannpv.org
+,2025-12-09 20:00:00,2025-08-19 17:42:59,2025-12-09 19:00:00,,,PTO Meeting,2828067@school.stannpv.org
+,2025-12-17 14:30:00,2025-08-19 17:42:59,2025-12-17 13:30:00,,,K-3 Christmas Program,2828068@school.stannpv.org
+,2025-12-17 19:30:00,2025-08-19 17:42:59,2025-12-17 18:30:00,,,K-3 Christmas Program,2828069@school.stannpv.org
+,2025-12-18 10:00:00,2025-08-19 17:42:59,2025-12-18 09:00:00,,,School Council Meeting,2828073@school.stannpv.org
+,2025-12-19 12:15:00,2025-08-19 17:42:59,2025-12-19 11:15:00,,,Christmas Parties K-8,2828076@school.stannpv.org
+,2026-01-10,2025-08-19 17:42:59,2026-01-09,,,Spirit Day & Spirit Day Cafe,2828089@school.stannpv.org
+,2026-01-10,2025-08-19 17:42:59,2026-01-09,,,26-27 Registration Opens,2828092@school.stannpv.org
+,2026-01-13,2025-08-19 17:42:59,2026-01-12,,,My Hot Lunch Box,2828094@school.stannpv.org
+,2026-01-13 20:00:00,2025-08-19 17:42:59,2026-01-13 19:00:00,,,PTO Meeting,2828096@school.stannpv.org
+,2026-01-14 10:15:00,2025-08-19 17:42:59,2026-01-14 09:15:00,,,Moms in Prayer,2828102@school.stannpv.org
+,2026-01-22 10:00:00,2025-08-19 17:42:59,2026-01-22 09:00:00,,,School Council Meeting,2828104@school.stannpv.org
+,2026-01-22 15:00:00,2025-08-19 17:42:59,2026-01-22 13:45:00,,,Spelling Bee 3rd - 8th,2828106@school.stannpv.org
+,2026-01-27,2025-08-19 17:42:59,2026-01-26,,,My Hot Lunch,2828108@school.stannpv.org
+,2026-01-26 10:30:00,2025-08-19 17:42:59,2026-01-26 09:30:00,,,Rosary,2828111@school.stannpv.org
+,2026-01-28 09:45:00,2025-08-19 17:42:59,2026-01-28 09:00:00,,,Near & Dear,2828113@school.stannpv.org
+,2026-01-30 22:30:00,2025-08-19 17:42:59,2026-01-30 21:30:00,,,K-8 Talent Show,2828115@school.stannpv.org
+,2026-01-30 21:00:00,2025-08-19 17:42:59,2026-01-30 18:30:00,,,Trivia Night,2828116@school.stannpv.org
+,2026-02-03,2025-08-19 17:42:59,2026-02-02,,,School Counselor Appreciation Day,2828118@school.stannpv.org
+,2026-02-07,2025-08-19 17:42:59,2026-02-06,,,Spirit Day & Spirit Day Cafe,2828119@school.stannpv.org
+,2026-02-07,2025-08-19 17:42:59,2026-02-06,,,Chat & Chew,2828120@school.stannpv.org
+,2026-02-10,2025-08-19 17:42:59,2026-02-09,,,26-27 Registration Closes,2828122@school.stannpv.org
+,2026-02-10,2025-08-19 17:42:59,2026-02-09,,,My Hot Lunch Box,2828123@school.stannpv.org
+,2026-02-10 20:00:00,2025-08-19 17:42:59,2026-02-10 19:00:00,,,PTO Meetin,2828125@school.stannpv.org
+,2026-02-12 12:00:00,2025-08-19 17:42:59,2026-02-12 11:00:00,,,K-8 St. Valentine Day Parties,2828126@school.stannpv.org
+,2026-02-14,2025-08-19 17:42:59,2026-02-13,,,3rd Quarter Progress,2828129@school.stannpv.org
+,2026-02-13 12:00:00,2025-08-19 17:42:59,2026-02-13 10:00:00,,,K-8 Parent Teacher Conferences,2828131@school.stannpv.org
+,2026-02-13 16:00:00,2025-08-19 17:42:59,2026-02-13 13:00:00,,,K-8 Parent Teacher Conferences,2828132@school.stannpv.org
+,2026-02-18 09:15:00,2025-08-19 17:42:59,2026-02-18 08:15:00,,,Ash Wednesday Mass,2828133@school.stannpv.org
+,2026-02-19 10:00:00,2025-08-19 17:42:59,2026-02-19 09:00:00,,,School Council Meeting,2828134@school.stannpv.org
+,2026-02-24,2025-08-19 17:42:59,2026-02-23,,,My Hot Lunch Box,2828135@school.stannpv.org
+,2026-03-03 09:00:00,2025-08-19 17:42:59,2026-03-03 08:00:00,,,Class Photos and 8th Grade Composite Photo,2828136@school.stannpv.org
+,2026-03-07,2025-08-19 17:42:59,2026-03-06,,,Spirit Day & Spirit Day Cafe,2828137@school.stannpv.org
+,2026-03-07,2025-08-19 17:42:59,2026-03-06,,,End of 3rd Quarter,2828138@school.stannpv.org
+,2026-03-10,2025-08-19 17:42:59,2026-03-09,,,My Hot Lunch Box,2828140@school.stannpv.org
+,2026-03-10 20:00:00,2025-08-19 17:42:59,2026-03-10 19:00:00,,,PTO Meeting,2828142@school.stannpv.org
+,2026-03-10 20:00:00,2025-08-19 17:42:59,2026-03-10 17:00:00,,,Culver's Spirirt Night,2828144@school.stannpv.org
+,2026-03-11 10:15:00,2025-08-19 17:42:59,2026-03-11 09:15:00,,,Moms in Prayer,2828146@school.stannpv.org
+,2026-03-13,2025-08-19 17:42:59,2026-03-12,,,Kindergarten Round- Up 26-27 year,2828150@school.stannpv.org
+,2026-03-13,2025-08-19 17:42:59,2026-03-12,,,Kindergarten NO School,2828151@school.stannpv.org
+,2026-03-14,2025-08-19 17:42:59,2026-03-13,,,Kindergarten NO School,2828153@school.stannpv.org
+,2026-03-14,2025-08-19 17:42:59,2026-03-13,,,Kindergarten Round- Up 26-27 year,2828154@school.stannpv.org
+,2026-03-24,2025-08-19 17:42:59,2026-03-23,,,First Day for Shorts,2828157@school.stannpv.org
+,2026-03-24,2025-08-19 17:42:59,2026-03-23,,,My Hot Lunch Box,2828158@school.stannpv.org
+,2026-03-27,2025-08-19 17:42:59,2026-03-26,,,School Council Meeting,2828159@school.stannpv.org
+,2026-03-28,2025-08-19 17:42:59,2026-03-27,,,Tiger Trot Kick Off,2828160@school.stannpv.org
+,2026-04-11,2025-08-19 17:42:59,2026-04-10,,,Spirit Day & Spirit Day Cafe,2828163@school.stannpv.org
+,2026-04-11,2025-08-19 17:42:59,2026-04-10,,,Chat and Chew,2828164@school.stannpv.org
+,2026-04-10 14:30:00,2025-08-19 17:42:59,2026-04-10 13:30:00,,,26/27 Kindergarten Kick Off,2828165@school.stannpv.org
+,2026-04-10 12:40:00,2025-08-19 17:42:59,2026-04-10 11:40:00,,,25/26 Kindergarten Dismiss at 11:40 AM,2828167@school.stannpv.org
+,2026-04-14,2025-08-19 17:42:59,2026-04-13,,,My Hot Lunch Box,2828168@school.stannpv.org
+,2026-04-14 20:00:00,2025-08-19 17:42:59,2026-04-14 19:00:00,,,PTO Meeting,2828169@school.stannpv.org
+,2026-04-14 11:30:00,2025-08-19 17:42:59,2026-04-14 10:30:00,,,Pen Friend Gathering,2828170@school.stannpv.org
+,2026-04-19 14:00:00,2025-08-19 17:42:59,2026-04-19 13:00:00,,,First Communion,2828171@school.stannpv.org
+,2026-04-22 14:30:00,2025-08-19 17:42:59,2026-04-22 13:30:00,,,8th Grade Production,2828172@school.stannpv.org
+,2026-04-22 19:30:00,2025-08-19 17:42:59,2026-04-22 18:30:00,,,8th Grade Production,2828173@school.stannpv.org
+,2026-04-23 10:00:00,2025-08-19 17:42:59,2026-04-23 09:00:00,,,School Council Meeting,2828174@school.stannpv.org
+,2026-04-25,2025-08-19 17:42:59,2026-04-24,,,4th Quarter Progress Report,2828175@school.stannpv.org
+,2026-04-28,2025-08-19 17:42:59,2026-04-27,,,My Hot Lunch Box,2828176@school.stannpv.org
+,2026-05-01,2025-08-19 17:42:59,2026-04-30,,,Rain Out Day for Tiger Trot,2828177@school.stannpv.org
+,2026-05-05,2025-08-19 17:42:59,2026-05-04,,,Teacher Appreciation Week,2828178@school.stannpv.org
+,2026-05-06,2025-08-19 17:42:59,2026-05-05,,,Teacher Appreciation Week,2828179@school.stannpv.org
+,2026-05-07,2025-08-19 17:42:59,2026-05-06,,,Teacher Appreciation Week,2828180@school.stannpv.org
+,2026-05-08,2025-08-19 17:42:59,2026-05-07,,,Teacher Appreciation Week,2828181@school.stannpv.org
+,2026-05-09,2025-08-19 17:42:59,2026-05-08,,,Teacher Appreciation Week,2828182@school.stannpv.org
+,2026-05-05 10:30:00,2025-08-19 17:42:59,2026-05-05 09:30:00,,,Rosary,2828183@school.stannpv.org
+,2026-05-06 10:15:00,2025-08-19 17:42:59,2026-05-06 09:15:00,,,Moms in Prayer,2828186@school.stannpv.org
+,2026-05-12,2025-08-19 17:42:59,2026-05-11,,,My Hot Lunch Box,2828187@school.stannpv.org
+,2026-05-12 10:30:00,2025-08-19 17:42:59,2026-05-12 09:30:00,,,Rosary,2828188@school.stannpv.org
+,2026-05-18 12:00:00,2025-08-19 17:42:59,2026-05-18 11:00:00,,,Kindergarten Last Day,2828191@school.stannpv.org
+,2025-08-26,2025-08-19 17:42:59,2025-08-25,,,KDO starts Full Days,2836716@school.stannpv.org
+,2025-12-18 19:30:00,2025-08-19 17:42:59,2025-12-18 18:30:00,,,YCC Christmas Program,2836724@school.stannpv.org
+,2025-12-19 11:30:00,2025-08-19 17:42:59,2025-12-19 11:00:00,,,YCC Christmas Parties,2836727@school.stannpv.org
+,2026-02-13,2025-08-19 17:42:59,2026-02-12,,,YCC Valentine Parties,2836731@school.stannpv.org
