@@ -102,10 +102,10 @@ for event_dict in event_data:
         hours_before = float(event_dict['Alarm Hours Before 1'])
         desc = hours_to_human_desc(summary, hours_before)
 
-        alarm_1.add('trigger', timedelta(hours=-hours_before))
+        alarm_1.add('trigger', timedelta(hours=-hours_before, minutes=1))
         alarm_1.add('description', desc)
     else:
-        alarm_1.add('trigger', timedelta(hours=-(7*24)))
+        alarm_1.add('trigger', timedelta(hours=-(7*24), minutes=1))
         alarm_1.add('description', f"7 days to {summary}")
     
     event.add_component(alarm_1)
@@ -120,10 +120,10 @@ for event_dict in event_data:
         hours_before = float(event_dict['Alarm Hours Before 2'])
         desc = hours_to_human_desc(summary, hours_before)
 
-        alarm_2.add('trigger', timedelta(hours=-hours_before))
+        alarm_2.add('trigger', timedelta(hours=-hours_before, minutes=1))
         alarm_2.add('description', desc)
     else:
-        alarm_2.add('trigger', timedelta(hours=-24))
+        alarm_2.add('trigger', timedelta(hours=-24, minutes=1))
         alarm_2.add('description', f"TOMORROW: {summary}")
 
     event.add_component(alarm_2)
