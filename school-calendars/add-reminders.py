@@ -4,6 +4,7 @@ from datetime import timedelta, datetime
 from pathlib import Path
 import csv
 import zoneinfo
+import uuid
 
 
 def hours_to_human_desc(description: str, hours: int) -> str:
@@ -62,6 +63,7 @@ daylight.add('rrule', {'freq': 'yearly', 'bymonth': 3, 'byday': '2SU'})
 daylight.add('tzname', 'CDT')
 tz.add_component(daylight)
 
+uid_i = 0
 cal.add_component(tz)
 for event_dict in event_data:
     print(event_dict["My Summary"])
@@ -81,15 +83,21 @@ for event_dict in event_data:
     dt_end = dt_end.replace(tzinfo=CT)
 
     summary = event_dict['My Summary']
+    
     event = Event()
+    event.add('uid', f"{uid_i}@school-calendar")
     event.add('summary', summary)
     event.add('categories', 'Kids')
     event.add('X-MICROSOFT-CDO-BUSYSTATUS', event_dict['X-MICROSOFT-CDO-BUSYSTATUS'])
     event.add('dtstart', dt_start)
     event.add('dtend',  dt_end)
+    uid_i += 1
 
     alarm_1 = Alarm()
     alarm_1.add('action', 'DISPLAY')
+    alarm_1_uid = str(uuid.uuid4()).upper()
+    alarm_1.add("X-WR-ALARMUID", alarm_1_uid)
+    alarm_1.add("uid", alarm_1_uid)
     if event_dict['Alarm Hours Before 1'] != '':
         hours_before = float(event_dict['Alarm Hours Before 1'])
         desc = hours_to_human_desc(summary, hours_before)
@@ -102,8 +110,12 @@ for event_dict in event_data:
     
     event.add_component(alarm_1)
 
+
     alarm_2 = Alarm()
     alarm_2.add('action', 'DISPLAY')
+    alarm_2_uid = str(uuid.uuid4()).upper()
+    alarm_2.add("X-WR-ALARMUID", alarm_2_uid)
+    alarm_2.add("uid", alarm_2_uid)
     if event_dict['Alarm Hours Before 2'] != '':
         hours_before = float(event_dict['Alarm Hours Before 2'])
         desc = hours_to_human_desc(summary, hours_before)
@@ -113,7 +125,7 @@ for event_dict in event_data:
     else:
         alarm_2.add('trigger', timedelta(hours=-24))
         alarm_2.add('description', f"TOMORROW: {summary}")
-    
+
     event.add_component(alarm_2)
 
     cal.add_component(event)
