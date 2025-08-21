@@ -63,7 +63,7 @@ daylight.add('rrule', {'freq': 'yearly', 'bymonth': 3, 'byday': '2SU'})
 daylight.add('tzname', 'CDT')
 tz.add_component(daylight)
 
-uid_i = 1
+uid_i = 0
 cal.add_component(tz)
 for event_dict in event_data:
     print(event_dict["My Summary"])
@@ -83,6 +83,7 @@ for event_dict in event_data:
     dt_end = dt_end.replace(tzinfo=CT)
 
     summary = event_dict['My Summary']
+    
     event = Event()
     event.add('uid', f"{uid_i}@school-calendar")
     event.add('summary', summary)
@@ -90,23 +91,27 @@ for event_dict in event_data:
     event.add('X-MICROSOFT-CDO-BUSYSTATUS', event_dict['X-MICROSOFT-CDO-BUSYSTATUS'])
     event.add('dtstart', dt_start)
     event.add('dtend',  dt_end)
+    uid_i += 1
 
-    # alarm_1 = Alarm()
-    # alarm_1.add('action', 'DISPLAY')
-    # if event_dict['Alarm Hours Before 1'] != '':
-    #     hours_before = float(event_dict['Alarm Hours Before 1'])
-    #     desc = hours_to_human_desc(summary, hours_before)
+    alarm_1 = Alarm()
+    alarm_1.add('action', 'DISPLAY')
+    alarm_1.add("X-WR-ALARMUID", str(uuid.uuid4()).upper())
+    if event_dict['Alarm Hours Before 1'] != '':
+        hours_before = float(event_dict['Alarm Hours Before 1'])
+        desc = hours_to_human_desc(summary, hours_before)
 
-    #     alarm_1.add('trigger', timedelta(hours=-hours_before))
-    #     alarm_1.add('description', desc)
-    # else:
-    #     alarm_1.add('trigger', timedelta(hours=-(7*24)))
-    #     alarm_1.add('description', f"7 days to {summary}")
+        alarm_1.add('trigger', timedelta(hours=-hours_before))
+        alarm_1.add('description', desc)
+    else:
+        alarm_1.add('trigger', timedelta(hours=-(7*24)))
+        alarm_1.add('description', f"7 days to {summary}")
     
-    # event.add_component(alarm_1)
+    event.add_component(alarm_1)
+
 
     alarm_2 = Alarm()
     alarm_2.add('action', 'DISPLAY')
+    alarm_2.add("X-WR-ALARMUID", str(uuid.uuid4()).upper())
     if event_dict['Alarm Hours Before 2'] != '':
         hours_before = float(event_dict['Alarm Hours Before 2'])
         desc = hours_to_human_desc(summary, hours_before)
@@ -116,8 +121,6 @@ for event_dict in event_data:
     else:
         alarm_2.add('trigger', timedelta(hours=-24))
         alarm_2.add('description', f"TOMORROW: {summary}")
-    
-    alarm_2.add("X-WR-ALARMUID", str(uuid.uuid4()).upper())
 
     event.add_component(alarm_2)
 
