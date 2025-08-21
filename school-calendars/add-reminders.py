@@ -84,8 +84,11 @@ for event_dict in event_data:
 
     summary = event_dict['My Summary']
     
+    
     event = Event()
-    event.add('uid', f"{uid_i}@school-calendar")
+    uid = datetime.now().strftime("%Y-%m-%d-%H%M%S") + "_" + str(uid_i)
+    event.add('uid', f"{uid}@school-calendar")
+    datetime.now().strftime("%Y-%m-%d-%H%M%S")
     event.add('summary', summary)
     event.add('categories', 'Kids')
     event.add('X-MICROSOFT-CDO-BUSYSTATUS', event_dict['X-MICROSOFT-CDO-BUSYSTATUS'])
