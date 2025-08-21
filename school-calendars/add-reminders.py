@@ -114,22 +114,22 @@ for event_dict in event_data:
     event.add_component(alarm_1)
 
 
-    alarm_2 = Alarm()
-    alarm_2.add('action', 'DISPLAY')
-    alarm_2_uid = str(uuid.uuid4()).upper()
-    alarm_2.add("X-WR-ALARMUID", alarm_2_uid)
-    alarm_2.add("uid", alarm_2_uid)
-    if event_dict['Alarm Hours Before 2'] != '':
-        hours_before = float(event_dict['Alarm Hours Before 2'])
-        desc = hours_to_human_desc(summary, hours_before)
+    # alarm_2 = Alarm()
+    # alarm_2.add('action', 'DISPLAY')
+    # alarm_2_uid = str(uuid.uuid4()).upper()
+    # alarm_2.add("X-WR-ALARMUID", alarm_2_uid)
+    # alarm_2.add("uid", alarm_2_uid)
+    # if event_dict['Alarm Hours Before 2'] != '':
+    #     hours_before = float(event_dict['Alarm Hours Before 2'])
+    #     desc = hours_to_human_desc(summary, hours_before)
 
-        alarm_2.add('trigger', timedelta(hours=-hours_before, minutes=1))
-        alarm_2.add('description', desc)
-    else:
-        alarm_2.add('trigger', timedelta(hours=-24, minutes=1))
-        alarm_2.add('description', f"TOMORROW: {summary}")
+    #     alarm_2.add('trigger', timedelta(hours=-hours_before, minutes=1))
+    #     alarm_2.add('description', desc)
+    # else:
+    #     alarm_2.add('trigger', timedelta(hours=-24, minutes=1))
+    #     alarm_2.add('description', f"TOMORROW: {summary}")
 
-    event.add_component(alarm_2)
+    # event.add_component(alarm_2)
 
     cal.add_component(event)
 
