@@ -99,8 +99,8 @@ for event_dict in event_data:
     alarm_1 = Alarm()
     alarm_1.add('action', 'DISPLAY')
     alarm_1_uid = str(uuid.uuid4()).upper()
-    # alarm_1.add("X-WR-ALARMUID", alarm_1_uid)
-    # alarm_1.add("uid", alarm_1_uid)
+    alarm_1.add("X-WR-ALARMUID", alarm_1_uid)
+    alarm_1.add("uid", alarm_1_uid)
     if event_dict['Alarm Hours Before 1'] != '':
         hours_before = float(event_dict['Alarm Hours Before 1'])
         desc = hours_to_human_desc(summary, hours_before)
@@ -117,8 +117,8 @@ for event_dict in event_data:
     alarm_2 = Alarm()
     alarm_2.add('action', 'DISPLAY')
     alarm_2_uid = str(uuid.uuid4()).upper()
-    # alarm_2.add("X-WR-ALARMUID", alarm_2_uid)
-    # alarm_2.add("uid", alarm_2_uid)
+    alarm_2.add("X-WR-ALARMUID", alarm_2_uid)
+    alarm_2.add("uid", alarm_2_uid)
     if event_dict['Alarm Hours Before 2'] != '':
         hours_before = float(event_dict['Alarm Hours Before 2'])
         desc = hours_to_human_desc(summary, hours_before)
